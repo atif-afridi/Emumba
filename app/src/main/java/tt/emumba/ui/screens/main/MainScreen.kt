@@ -79,8 +79,6 @@ internal fun MainScreen() {
                             Note(title = "Todo Item 15")
                         )
                     ),
-                    onItemClick = {},
-                    onItemDelete = {},
                     // 2. Space Adjustment for Overlapping UI Elements
                     overlappingElementsHeight = OverlappingHeight
                 )
