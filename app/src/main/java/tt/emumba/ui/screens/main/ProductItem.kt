@@ -1,4 +1,4 @@
-package tt.emumba.ui.composeable
+package tt.emumba.ui.screens.main
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -30,20 +30,18 @@ import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import tt.emumba.R
 import tt.emumba.domain.model.Note
-import tt.emumba.ui.constants.GrayColor
-import tt.emumba.ui.constants.LargeDp
-import tt.emumba.ui.constants.MediumDp
-import tt.emumba.ui.constants.ProductItemBackgroundColor
-import tt.emumba.ui.constants.ProductItemHeight
-import tt.emumba.ui.constants.ProductItemIconSize
-import tt.emumba.ui.constants.ProductItemTextColor
-import tt.emumba.ui.constants.ProductItemTitleTextStyle
+import tt.emumba.ui.theme.constants.GrayColor
+import tt.emumba.ui.theme.constants.LargeDp
+import tt.emumba.ui.theme.constants.MediumDp
+import tt.emumba.ui.theme.constants.ProductItemBackgroundColor
+import tt.emumba.ui.theme.constants.ProductItemHeight
+import tt.emumba.ui.theme.constants.ProductItemIconSize
+import tt.emumba.ui.theme.constants.ProductItemTextColor
+import tt.emumba.ui.theme.constants.ProductItemTitleTextStyle
 
 @Composable
 fun ProductItemUi(
     todoItem: Note = Note(id = 0, title = "Todo Item", content = "testing"),
-    onItemClick: (Note) -> Unit = {},
-    onItemDelete: (Note) -> Unit = {}
 ) {
 
     Card(
@@ -57,12 +55,13 @@ fun ProductItemUi(
             modifier = Modifier
                 .fillMaxSize()
                 .background(ProductItemBackgroundColor.copy(alpha = 0.5f))
-                .clickable(
-                    interactionSource = remember { MutableInteractionSource() },
-                    indication = rememberRipple(bounded = true)
-                ) {
-//                    onItemClick(todoItem)
-                },
+//                .clickable(
+//                    interactionSource = remember { MutableInteractionSource() },
+//                    indication = rememberRipple(bounded = true)
+//                ) {
+////                    onItemClick(todoItem)
+//                },,
+                    ,
             verticalAlignment = Alignment.CenterVertically,
         ) {
             AsyncImage(
@@ -83,7 +82,7 @@ fun ProductItemUi(
                     style = ProductItemTitleTextStyle.copy(color = ProductItemTextColor),
                     maxLines = 1,
                     overflow = TextOverflow.Ellipsis,
-//                    textDecoration = null
+                    textDecoration = null
                 )
                 Spacer(
                     modifier = Modifier.fillMaxWidth().height(10.dp).padding(4.dp))
@@ -106,20 +105,6 @@ fun ProductItemUi(
                     textDecoration = null
                 )
             }
-
-            // 6. IconButton for Deletion
-//            IconButton(
-//                onClick = { onItemDelete(todoItem) },
-//                modifier = Modifier.size(TodoItemActionButtonRippleRadius)
-//            ) {
-//                Icon(
-//                    modifier = Modifier.size(TodoItemIconSize),
-////                    painter = painterResource(id = R.drawable.ic_delete),
-//                    painter = painterResource(id = 0),
-//                    contentDescription = null,
-//                    tint = iconTintColor
-//                )
-//            }
         }
     }
 }

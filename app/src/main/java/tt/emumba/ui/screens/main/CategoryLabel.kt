@@ -1,4 +1,4 @@
-package tt.emumba.ui.composeable
+package tt.emumba.ui.screens.main
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable

@@ -1,4 +1,4 @@
-package tt.emumba.ui.constants
+package tt.emumba.ui.theme.constants
 
 import androidx.compose.ui.graphics.Color
 

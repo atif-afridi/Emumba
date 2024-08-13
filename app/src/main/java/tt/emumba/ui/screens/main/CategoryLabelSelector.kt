@@ -1,4 +1,4 @@
-package tt.emumba.ui.composeable
+package tt.emumba.ui.screens.main
 
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
@@ -35,14 +35,12 @@ fun LabelSelectorBar(
     labelVerticalPadding: Dp = 8.dp,
     onCategoryClick: (Category) -> Unit = {},
 ) {
-    // 3. Stateful Selection Management:
     val selectedLabel = rememberSaveable { mutableStateOf(labelItems.firstOrNull()?.name ?: "") }
     LazyRow(
         verticalAlignment = Alignment.CenterVertically,
         modifier = Modifier.height(barHeight)
     ) {
         item { Spacer(modifier = Modifier.width(horizontalPadding)) }
-        // 4. Interactive Label Identification
         items(labelItems) { label ->
             LabelUi(
                 category = label,
@@ -55,7 +53,6 @@ fun LabelSelectorBar(
                 roundedCornerShapeSize = roundedCornerShapeSize,
                 horizontalPadding = labelHorizontalPadding,
                 verticalPadding = labelVerticalPadding,
-//                onClick = onCategoryClick,
             ) {
                 selectedLabel.value = label.name
                 onCategoryClick.invoke(label)

@@ -3,8 +3,6 @@ package tt.emumba.di
 import org.koin.android.ext.koin.androidContext
 import org.koin.dsl.module
 import tt.emumba.data.repository.NoteRepositoryImpl
-import tt.emumba.data.source.NoteDataSource
-import tt.emumba.data.source.RoomDataSource
 import tt.emumba.data.database.NoteDatabase
 import tt.emumba.data.database.NoteDatabase.Companion.getNoteTableDao
 import tt.emumba.domain.repository.NoteRepository
@@ -24,7 +22,7 @@ var databaseModule = module {
     single {
         getNoteTableDao(get())
     }
-    single<NoteDataSource> { RoomDataSource(get()) }
+//    single<NoteDataSource> { RoomDataSource(get()) }
     single<NoteRepository> { NoteRepositoryImpl(get()) }
     // use cases.
     single { GetNotesUseCase(get()) }

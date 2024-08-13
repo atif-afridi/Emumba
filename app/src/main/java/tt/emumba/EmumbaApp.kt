@@ -9,17 +9,22 @@ import tt.emumba.di.repositories
 import tt.emumba.di.viewModels
 
 
-class AppClass : Application() {
+class EmumbaApp : Application() {
 
     override fun onCreate() {
         super.onCreate()
+        setUpKoin()
+    }
+
+    private fun setUpKoin() {
         startKoin {
             printLogger(Level.DEBUG)
-            androidContext(this@AppClass)
+            androidContext(this@EmumbaApp)
             modules(
                 databaseModule,
                 viewModels,
-                repositories,) // Add more modules here if needed
+                repositories,
+            )
         }
     }
 }
