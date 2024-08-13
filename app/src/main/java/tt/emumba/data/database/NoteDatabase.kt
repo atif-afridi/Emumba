@@ -1,11 +1,11 @@
-package tt.emumba.database
+package tt.emumba.data.database
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import tt.emumba.data.model.NoteDao
-import tt.emumba.data.model.NoteEntity
+import tt.emumba.data.database.daos.NoteDao
+import tt.emumba.data.database.model.NoteEntity
 
 @Database(entities = [NoteEntity::class], version = 1)
 abstract class NoteDatabase : RoomDatabase() {

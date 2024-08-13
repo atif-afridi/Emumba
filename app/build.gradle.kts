@@ -75,5 +75,7 @@ dependencies {
     ksp(libs.room.compiler)
     // coil for url images
     implementation(libs.coil)
+    // retrofit
+    implementation(libs.retrofit)
 
 }

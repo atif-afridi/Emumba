@@ -8,7 +8,7 @@ import kotlinx.coroutines.launch
 import tt.emumba.domain.model.Note
 import tt.emumba.domain.usecase.DeleteNoteUseCase
 import tt.emumba.domain.usecase.GetNotesUseCase
-import tt.cleanarchmvvm.domain.usecase.InsertNoteUseCase
+import tt.emumba.domain.usecase.InsertNoteUseCase
 
 class NotesViewModel(
     private val getNotesUseCase: GetNotesUseCase,

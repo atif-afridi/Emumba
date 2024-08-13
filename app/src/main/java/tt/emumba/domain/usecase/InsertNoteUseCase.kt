@@ -1,11 +1,11 @@
-package tt.cleanarchmvvm.domain.usecase
+package tt.emumba.domain.usecase
 
-import tt.emumba.data.source.NoteDataSource
 import tt.emumba.domain.model.Note
+import tt.emumba.domain.repository.NoteRepository
 
-class InsertNoteUseCase(private val roomDataSource: NoteDataSource) {
+class InsertNoteUseCase(private val noteRepository: NoteRepository) {
 
     suspend fun execute(note: Note) {
-        roomDataSource.insert(note)
+        noteRepository.insert(note)
     }
 }

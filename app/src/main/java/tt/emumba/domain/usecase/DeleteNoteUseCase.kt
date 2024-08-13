@@ -1,10 +1,11 @@
 package tt.emumba.domain.usecase
 
-import tt.emumba.data.source.NoteDataSource
+import tt.emumba.domain.repository.NoteRepository
 
-class DeleteNoteUseCase(private val roomDataSource: NoteDataSource) {
+
+class DeleteNoteUseCase(private val noteRepository: NoteRepository) {
 
     suspend fun execute() {
-        roomDataSource.deleteAll()
+        noteRepository.deleteAll()
     }
 }

@@ -5,12 +5,12 @@ import org.koin.dsl.module
 import tt.emumba.data.repository.NoteRepositoryImpl
 import tt.emumba.data.source.NoteDataSource
 import tt.emumba.data.source.RoomDataSource
-import tt.emumba.database.NoteDatabase
-import tt.emumba.database.NoteDatabase.Companion.getNoteTableDao
+import tt.emumba.data.database.NoteDatabase
+import tt.emumba.data.database.NoteDatabase.Companion.getNoteTableDao
 import tt.emumba.domain.repository.NoteRepository
 import tt.emumba.domain.usecase.DeleteNoteUseCase
 import tt.emumba.domain.usecase.GetNotesUseCase
-import tt.cleanarchmvvm.domain.usecase.InsertNoteUseCase
+import tt.emumba.domain.usecase.InsertNoteUseCase
 import tt.emumba.presentation.viewmodels.NotesViewModel
 
 /**

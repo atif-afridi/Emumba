@@ -1,23 +1,14 @@
-package tt.emumba.data.model
+package tt.emumba.data.database.daos
 
 import androidx.room.Dao
 import androidx.room.Delete
-import androidx.room.Entity
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
-import androidx.room.PrimaryKey
 import androidx.room.Query
 import androidx.room.Update
 import kotlinx.coroutines.flow.Flow
+import tt.emumba.data.database.model.NoteEntity
 
-@Entity(tableName = "notes")
-data class NoteEntity(
-    @PrimaryKey(autoGenerate = true) val id: Int,
-    val title: String,
-    val content: String
-)
-
-// DAO
 @Dao
 interface NoteDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
