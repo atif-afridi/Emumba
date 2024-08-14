@@ -21,7 +21,7 @@ internal fun MainScreen(viewModel: NotesViewModel) {
             Row {
                 val context = LocalContext.current
                 LabelSelectorBar(
-                    labelItemFlow =viewModel.categories,
+                    categoryItemFlow =viewModel.categories,
                     barHeight = 80.dp,
                     horizontalPadding = 12.dp,
                     distanceBetweenItems = 8.dp,
@@ -57,8 +57,5 @@ internal fun MainScreen(viewModel: NotesViewModel) {
 @Preview
 @Composable
 fun MainScreenPreview() {
-//    KoinApplication(
-//        application = { modules(viewModels) },
-////        content = { NotesScreen(viewModel = koinViewModel()) }
-//    )
+
 }

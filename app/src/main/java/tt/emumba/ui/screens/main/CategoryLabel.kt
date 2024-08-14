@@ -26,7 +26,7 @@ import tt.emumba.domain.model.Category
 @Composable
 fun LabelUi(
     category: Category,
-    selected: Boolean = false,
+    selected: Boolean,
     labelTextStyle: TextStyle = TextStyle(
         fontWeight = FontWeight.SemiBold,
         fontSize = 16.sp

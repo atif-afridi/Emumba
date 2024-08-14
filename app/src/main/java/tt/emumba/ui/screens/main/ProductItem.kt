@@ -67,9 +67,11 @@ fun ProductItemUi(
                 placeholder = painterResource(id = R.drawable.img_placeholder),
                 error = painterResource(id = R.drawable.error_img),
             )
-            Column(modifier = Modifier
-                .weight(1f)
-                .fillMaxWidth()) {
+            Column(
+                modifier = Modifier
+                    .weight(1f)
+                    .fillMaxWidth()
+            ) {
                 Text(
                     modifier = Modifier.fillMaxWidth(),
                     text = productItem.title ?: "",
@@ -82,7 +84,8 @@ fun ProductItemUi(
                     modifier = Modifier
                         .fillMaxWidth()
                         .height(10.dp)
-                        .padding(4.dp))
+                        .padding(4.dp)
+                )
                 Text(
                     modifier = Modifier.fillMaxWidth(),
                     text = "Description with ellipsis",
@@ -95,19 +98,19 @@ fun ProductItemUi(
                     modifier = Modifier
                         .fillMaxWidth()
                         .height(10.dp)
-                        .padding(4.dp))
-                Row {
+                        .padding(4.dp)
+                )
+                Row(modifier = Modifier.fillMaxWidth()) {
                     Text(
-//                        modifier = Modifier.fillMaxWidth(),
+                        modifier = Modifier.weight(1f),
                         text = "Price ${productItem.price ?: 0}",
                         style = ProductItemTitleTextStyle.copy(color = GrayColor),
                         maxLines = 1,
                         overflow = TextOverflow.Ellipsis,
                         textDecoration = null
                     )
-                    Spacer(Modifier.weight(1f))
                     Text(
-//                        modifier = Modifier.fillMaxWidth(),
+                        modifier = Modifier.weight(1f),
                         text = productItem.category?.name ?: "",
                         style = ProductItemTitleTextStyle.copy(color = GrayColor),
                         maxLines = 1,
@@ -127,8 +130,38 @@ fun ProductItemUiPreview() {
         modifier = Modifier.padding(MediumDp),
         verticalArrangement = Arrangement.spacedBy(MediumDp)
     ) {
-        ProductItemUi(Product(id= 1,title = "test", price = 100.0, images = emptyList(), category = null, creationAt = "", updatedAt = ""))
-        ProductItemUi(Product(id= 2,title = "test", price = 100.0, images = emptyList(), category = null, creationAt = "", updatedAt = ""))
-        ProductItemUi(Product(id= 3,title = "test", price = 100.0, images = emptyList(), category = null, creationAt = "", updatedAt = ""))
+        ProductItemUi(
+            Product(
+                id = 1,
+                title = "test",
+                price = 100.0,
+                images = emptyList(),
+                category = null,
+                creationAt = "",
+                updatedAt = ""
+            )
+        )
+        ProductItemUi(
+            Product(
+                id = 2,
+                title = "test",
+                price = 100.0,
+                images = emptyList(),
+                category = null,
+                creationAt = "",
+                updatedAt = ""
+            )
+        )
+        ProductItemUi(
+            Product(
+                id = 3,
+                title = "test",
+                price = 100.0,
+                images = emptyList(),
+                category = null,
+                creationAt = "",
+                updatedAt = ""
+            )
+        )
     }
 }

@@ -31,11 +31,11 @@ class NotesViewModel(
 
     private val _category = MutableStateFlow<Category?>(null)
     val products: Flow<List<Product>>
-        get() = combine(_products, _category) { _notes, _category ->
+        get() = combine(_products, _category) { _products, _category ->
             if (_category != null) {
-                _notes.filter { it.category?.id == _category.id }
+                _products.filter { it.category?.id == _category.id }
             } else {
-                _notes
+                _products
             }
         }
 
@@ -46,15 +46,26 @@ class NotesViewModel(
             getCategoriesUseCase.invoke().collect {
                 when (it) {
                     is NetworkResult.Success -> {
+                        var temp: Category? = null
                         it.data?.let { list ->
-                            _categories.value = list.apply {
-                                it.data[0].initialSelectedValue = true
+                            _categories.value = list.mapIndexed { index, category ->
+                                if (index == 0) {
+                                    temp = category
+                                    category.copy(initialSelectedValue = true)
+                                } else {
+                                    category
+                                }
+                            }
+                            temp?.let {
+                                onCategorySelected(it)
                             }
                         }
                     }
+
                     is NetworkResult.Error -> {
 
                     }
+
                     is NetworkResult.Loading -> {
 
                     }
@@ -62,6 +73,7 @@ class NotesViewModel(
             }
         }
     }
+
     private fun fetchProducts() {
 
         viewModelScope.launch(Dispatchers.IO) {
@@ -69,13 +81,14 @@ class NotesViewModel(
                 when (it) {
                     is NetworkResult.Success -> {
                         it.data?.let { list ->
-                            _category.value = list[0].category
                             _products.value = list
                         }
                     }
+
                     is NetworkResult.Error -> {
 
                     }
+
                     is NetworkResult.Loading -> {
 
                     }
@@ -87,4 +100,5 @@ class NotesViewModel(
     fun onCategorySelected(category: Category) {
         _category.value = category
     }
+
 }
