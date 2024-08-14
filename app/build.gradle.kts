@@ -19,6 +19,9 @@ android {
         vectorDrawables {
             useSupportLibrary = true
         }
+//        buildConfigField("String", "BASE_URL", "\"https://jsonplaceholder.typicode.com\"")
+        buildConfigField("String", "BASE_URL", "\"https://api.escuelajs.co/\"")
+
     }
 
     buildTypes {
@@ -39,6 +42,7 @@ android {
     }
     buildFeatures {
         compose = true
+        buildConfig = true
     }
     composeOptions {
         kotlinCompilerExtensionVersion = "1.5.1"
@@ -77,5 +81,11 @@ dependencies {
     implementation(libs.coil)
     // retrofit
     implementation(libs.retrofit)
+    implementation(libs.retrofit.gson)
+
+    // okhttp
+    implementation("com.google.code.gson:gson:2.8.6")
+    implementation("com.squareup.okhttp3:okhttp:3.12.0")
+    implementation("com.squareup.okhttp3:logging-interceptor:3.11.0")
 
 }

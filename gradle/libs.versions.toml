@@ -39,6 +39,7 @@ koin_compose = { module = "io.insert-koin:koin-androidx-compose", version.ref = 
 coil = { module = "io.coil-kt:coil-compose", version.ref = "coilVersion" }
 # retrofit
 retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofitVersion" }
+retrofit_gson = { module = "com.squareup.retrofit2:converter-gson", version.ref = "retrofitVersion" }
 
 
 room = { group = "androidx.room", name = "room-ktx", version.ref = "roomVersion" }

@@ -16,23 +16,23 @@ import androidx.compose.ui.unit.dp
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flowOf
 import tt.emumba.ui.theme.constants.MediumDp
-import tt.emumba.domain.model.Note
+import tt.emumba.domain.model.Product
 
 @Composable
 fun ProductItemsContainer(
     modifier: Modifier = Modifier,
-    todoItemsFlow: Flow<List<Note>> = flowOf(listOf()),
+    productItemsFlow: Flow<List<Product>> = flowOf(listOf()),
     overlappingElementsHeight: Dp = 0.dp
 ) {
-    val todos = todoItemsFlow.collectAsState(initial = listOf()).value
+    val products = productItemsFlow.collectAsState(initial = listOf()).value
     LazyColumn(
         modifier = modifier.fillMaxSize(),
         contentPadding = PaddingValues(MediumDp),
         verticalArrangement = Arrangement.spacedBy(MediumDp)
     ) {
-        items(todos, /*key = { it.id }*/) { item ->
+        items(products, /*key = { it.id }*/) { item ->
             ProductItemUi(
-                todoItem = item,
+                productItem = item,
             )
         }
         item { Spacer(modifier = Modifier.height(overlappingElementsHeight)) }
@@ -43,13 +43,6 @@ fun ProductItemsContainer(
 @Composable
 fun ProductItemsContainerPreview() {
     ProductItemsContainer(
-        todoItemsFlow = flowOf(
-            listOf(
-                Note(title = "Todo Item 1", isDone = true),
-                Note(title = "Todo Item 2"),
-                Note(title = "Todo Item 3"),
-                Note(title = "Todo Item 4", isDone = true),
-            )
-        )
+        productItemsFlow = flowOf(listOf())
     )
 }
