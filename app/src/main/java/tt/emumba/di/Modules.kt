@@ -6,7 +6,7 @@ import tt.emumba.data.repository.NoteRepositoryImpl
 import tt.emumba.domain.repository.NoteRepository
 import tt.emumba.domain.usecase.GetCategoriesUseCase
 import tt.emumba.domain.usecase.GetProductsUseCase
-import tt.emumba.presentation.viewmodels.NotesViewModel
+import tt.emumba.presentation.viewmodels.HomeViewModel
 
 var useCaseModule = module {
     single { GetCategoriesUseCase(get()) }
@@ -14,7 +14,7 @@ var useCaseModule = module {
 }
 
 var viewModels = module {
-    viewModel { NotesViewModel(get(),get()) }
+    viewModel { HomeViewModel(get(),get()) }
 }
 var repositories = module {
     single<NoteRepository> { NoteRepositoryImpl(get()) }

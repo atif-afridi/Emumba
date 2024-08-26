@@ -7,6 +7,4 @@ data class Category(
     val image: String? = null,
     val creationAt: String? = null,
     val updatedAt: String? = null,
-    // non-api local check
-    var initialSelectedValue: Boolean = false
 )

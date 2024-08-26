@@ -22,10 +22,11 @@ import androidx.compose.ui.unit.sp
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flowOf
 import tt.emumba.domain.model.Category
+import tt.emumba.ui.models.CategoryDO
 
 @Composable
 fun LabelSelectorBar(
-    categoryItemFlow: Flow<List<Category>> = flowOf(listOf()),
+    categories: List<CategoryDO> = listOf(),
     barHeight: Dp = 56.dp,
     horizontalPadding: Dp = 8.dp,
     distanceBetweenItems: Dp = 0.dp,
@@ -39,7 +40,6 @@ fun LabelSelectorBar(
     labelVerticalPadding: Dp = 8.dp,
     onCategoryClick: (Category) -> Unit = {},
 ) {
-    var categories = categoryItemFlow.collectAsState(initial = listOf()).value
     // Set the first element as selected by default if not already set
     var selectedIndex by rememberSaveable { mutableStateOf(0) }
 
@@ -49,10 +49,10 @@ fun LabelSelectorBar(
     ) {
         item { Spacer(modifier = Modifier.width(horizontalPadding)) }
         items(categories.size) {index->
-            val category = categories[index]
+            val categoryDO = categories[index]
             LabelUi(
-                category = category,
-                selected =  category.initialSelectedValue,
+                category = categoryDO.category,
+                selected =  categoryDO.isSelected,
                 labelTextStyle = labelTextStyle,
                 backgroundColor = backgroundColor,
                 selectedBackgroundColor = selectedBackgroundColor,
@@ -62,15 +62,7 @@ fun LabelSelectorBar(
                 horizontalPadding = labelHorizontalPadding,
                 verticalPadding = labelVerticalPadding,
             ) {
-
-                categories = categories.mapIndexed { i, cat ->
-                    if(cat.id == category.id){
-                        cat.copy(initialSelectedValue = true)
-                    }
-                    cat.copy(initialSelectedValue = false)
-                }
-
-                onCategoryClick.invoke(category)
+                onCategoryClick.invoke(categoryDO.category)
             }
             Spacer(modifier = Modifier.width(distanceBetweenItems))
         }
@@ -82,14 +74,14 @@ fun LabelSelectorBar(
 @Composable
 fun LabelSelectorBarPreview() {
     LabelSelectorBar(
-        categoryItemFlow = flowOf(listOf(
-            Category(name = "All", initialSelectedValue = true),
-            Category(name = "Pop"),
-            Category(name = "Rock"),
-            Category(name = "Jazz"),
-            Category(name = "Jazz"),
-            Category(name = "Hip Hop"),
-            Category(name = "Classical")
-        ))
+        categories = listOf(
+            CategoryDO(Category(name = "All"), isSelected = true),
+            CategoryDO(Category(name = "Pop")),
+            CategoryDO(Category(name = "Rock")),
+            CategoryDO(Category(name = "Jazz")),
+            CategoryDO(Category(name = "Jazz")),
+            CategoryDO(Category(name = "Hip Hop")),
+            CategoryDO(Category(name = "Classical"))
+        ),
     )
 }
